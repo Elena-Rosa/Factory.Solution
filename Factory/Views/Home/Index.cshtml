@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Microsoft.AspNetCore.Mvc;
+@using Factory.Models;
+@using System.Collections.Generic;
+@using System.Linq;
+
+<h1>Welcome to Machines R Us!</h1>
+
+<hr>
+
+<h4>Engineers</h4>
+@if (Model["engineers"].Length == 0)
+{
+  <p>No engineers have been added yet!</p>
+} 
+<ul>
+  @foreach (Engineer cat in Model["Engineers"])
+  {
+    <li>@Html.ActionLink(@cat.Name, "Details", "Engineers", new { id = @cat.EngineerId})</li>
+  }
+</ul>
+
+<h4>Machines</h4>
+@if (Model["machines"].Length == 0)
+{
+  <p>No machines have been added yet!</p>
+} 
+<ul>
+  @foreach (Machine machine in Model["Machines"])
+  {
+    <li>@Html.ActionLink(@item.Description, "Details", "Machines", new { id = @machine.MachineId})</li>
+  }
+</ul>
+
+<hr>
+
+<p>@Html.ActionLink("Manage machines", "Index", "Machines")</p> 
+<p>@Html.ActionLink("Manage engineers", "Index", "Engineers")</p>
