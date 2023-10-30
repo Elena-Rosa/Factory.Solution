@@ -19,15 +19,16 @@ namespace Factory.Controllers
 
     public ActionResult Index()
     {
-      IEnumerable<Engineer> sortedEngineers = _db.Engineers.OrderBy(engineer => engineer.Name);
-      return View(sortedEngineers.ToList());
+      List<Engineer> model = _db.Engineers.OrderBy(engineer => engineer.Name).ToList();
+      return View(model);
     }
 
-    public ActionResult Create()
+    public ActionResult Create(int id)
     {
       ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
       return View();
     }
+      
 
     [HttpPost]
     public ActionResult Create(Engineer engineer, int MachineId)
