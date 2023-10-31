@@ -1,5 +1,5 @@
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
 @using Factory.Models;
@@ -7,10 +7,10 @@
 <h1>Engineers</h1>
 
 <ul>
-  @foreach(Engineer engineer in Model)
-  {
-    <li>@Html.ActionLink($"{machine.Name}", "Details", new{ id = machine.MachineId })</li>
-  }
+    @foreach (Engineer engineer in Model)
+    {
+        <li>@Html.ActionLink($"{engineer.Name}", "Details", new { id = engineer.EngineerId })</li>
+    }
 </ul>
 
 <p>@Html.ActionLink("Add new Engineer", "Create")</p>

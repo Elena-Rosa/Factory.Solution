@@ -1,24 +1,25 @@
 @{
-  Layout = "_Layout";
+    Layout = "_Layout";
 }
 
 @model Factory.Models.Engineer
-@using System.Collections.Generic;
 
-<h1>Machine</h1>
+<h4>Add Engineer</h4>
 
-@if (Model.Count == 0)
+<hr />
+
+@using (Html.BeginForm())
 {
-  <h3>No machines have been added yet!</h3>
-} 
-else
-{
-  <ul>
-    @foreach(Machine machine in Model)
-    {
-      <li>@Html.ActionLink($"{machine.Name}", "Details", new { id = machine.MachineId }) | @machine.Engineer.Name</li>
-    }
-  </ul>
+    @Html.Label("Name")
+    @Html.TextBoxFor(model => model.Name, new { @class = "form-control", required = "required" })
+
+
+    <br>
+    @Html.Label("Machines")
+    @Html.DropDownList("MachineId", null, string.Empty)
+
+   
+    <input type="submit" value="Complete" class="btn btn-default" required="true" />
 }
 
-<p>@Html.ActionLink("Add new machine", "Create")</p>
+<p>@Html.ActionLink("back to employee directory", "Index")</p>

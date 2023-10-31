@@ -10,17 +10,20 @@
 <hr />
 <h3>
     Name: @Html.DisplayFor(model => model.Name)</h3>  
-<h3>Description: @Html.DisplayFor(model => model.Description)</h3>
+<h3>Description: @Html.DisplayFor(model => model.MachineDescription)</h3>
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This machine does not have any engineers yet!</p>
+  <p>This machine has not been assigned to an engineer</p>
 }
 else
 {
   <h4>This machine has the following engineers</h4>
   <ul>
-    @foreach (EngineerMachine join in Model.JoinEntities)
+    @foreach (var join in Model.JoinEntities)
+    {
+      <li>@join.Engineer.Name</li>
+    }
     {
     <p>@Join.Engineer.Name</p>
     <p>@Join.Engineer.Specialty</p>
