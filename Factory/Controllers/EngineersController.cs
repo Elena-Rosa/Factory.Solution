@@ -25,8 +25,9 @@ namespace Factory.Controllers
 
     public ActionResult Create(int id)
     {
-      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineName");
-      return View();
+      Engineer thisEngineer = _db.Engineers.FirstOrDefault(engineer => engineer.EngineerId == id); 
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "MachineDescription);
+      return View(thisEngineer);
     }
       
 

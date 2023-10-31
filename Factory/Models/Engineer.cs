@@ -7,7 +7,7 @@ namespace Factory.Models
   {
     public int EngineerId { get; set; }
     public string Name { get; set; }
-    public List<EngineerMachine> JoinEntities { get; set; }
+    public virtual List<EngineerMachine> JoinEntities { get; set; }
     public string Speciality { get; set; }
   }
 }

@@ -16,16 +16,15 @@ namespace Factory.Controllers
       _db = db;
     }
 
-    public ActionResult Index()
+     public ActionResult Index()
     {
-      IEnumerable<Machine> sortedMachines = _db.Machines.OrderBy(machine => machine.MachineName);
-      return View(sortedMachines.ToList());
+      List<Machine> model = _db.Machines.ToList();
+      return View(model);
     }
 
     public ActionResult Create()
     {
-        ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
-    return View();
+      return View();
     }
 
     [HttpPost]
@@ -45,7 +44,7 @@ namespace Factory.Controllers
 {
     Machine thisMachine = _db.Machines
         .Include(machine => machine.JoinEntities)
-            .ThenInclude(join => join.Engineer) 
+        .ThenInclude(join => join.Engineer) 
         .FirstOrDefault(machine => machine.MachineId == id);
 
     return View(thisMachine);
@@ -63,7 +62,7 @@ namespace Factory.Controllers
     {
       _db.Machines.Update(machine);
       _db.SaveChanges();
-      return RedirectToAction("Details");
+      return RedirectToAction("Index");
     }
 
      public ActionResult AddEngineer(int id)

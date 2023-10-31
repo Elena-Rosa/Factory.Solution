@@ -21,7 +21,7 @@ namespace Factory.Controllers
     public ActionResult Index()
     {
       ViewBag.EmployeeDirectory = new List<Engineer>(_db.Engineers.OrderBy(engineer => engineer.Name));
-      ViewBag.MachineInventory = new List<Machine>(_db.Machines.OrderBy(machine => machine.MachineName));
+      ViewBag.MachineInventory = new List<Machine>(_db.Machines.OrderBy(machine => machine.MachineDescription));
       return View();
     }
 
