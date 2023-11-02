@@ -17,9 +17,9 @@
   <p>No engineers have been added yet!</p>
 }
 <ul>
-  @foreach (Engineer engineer in Model["Engineers"])
+  @foreach (Engineer engineer in Model["engineers"])
   {
-    <li>@Html.ActionLink(@engineer.EngineerName, "Details", "Engineers", new { id = @engineer.EngineerId })</li>
+    <li>@Html.ActionLink(@Engineer.Name, "Details", "Engineers", new { id = @engineer.EngineerId })</li>
   }
 </ul>
 
