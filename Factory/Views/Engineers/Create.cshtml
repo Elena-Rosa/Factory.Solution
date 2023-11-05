@@ -16,7 +16,8 @@
 
     <br>
     @Html.Label("Machines")
-    @Html.DropDownList("MachineId", null, string.Empty)
+    @Html.DropDownList("MachineId", ViewBag.MachineList as SelectList, string.Empty, new { @class = "form-control" })
+
 
    
     <input type="submit" value="Complete" class="btn btn-default" required="true" />

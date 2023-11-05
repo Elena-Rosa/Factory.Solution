@@ -14,7 +14,8 @@
   @Html.TextBoxFor(model => model.MachineDescription)
 
   @Html.LabelFor(model => model.Name)
-  @Html.DropDownList("EngineerId")
+  @Html.DropDownList("EngineerId", ViewBag.EngineerId as SelectList, "Select an engineer", new { @class = "form-control" })
+
 
   <input type="submit" value="Add new machine" class="btn btn-default" />
 }
