@@ -36,8 +36,9 @@ namespace Factory.Controllers
       if (EngineerId !=0)
       {
         _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
+        _db.SaveChanges();
       }
-      _db.SaveChanges();
+      
       return RedirectToAction("Index");
     }
 
