@@ -40,6 +40,7 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+
   public ActionResult Details(int id)
 {
     Machine thisMachine = _db.Machines
