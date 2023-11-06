@@ -16,7 +16,7 @@ namespace Factory.Controllers
       _db = db;
     }
 
-     public ActionResult Index()
+    public ActionResult Index()
     {
       List<Machine> model = _db.Machines.ToList();
       return View(model);
@@ -33,25 +33,25 @@ namespace Factory.Controllers
     {
       _db.Machines.Add(machine);
       _db.SaveChanges();
-      if (EngineerId !=0)
+      if (EngineerId != 0)
       {
         _db.EngineerMachines.Add(new EngineerMachine() { EngineerId = EngineerId, MachineId = machine.MachineId });
         _db.SaveChanges();
       }
-      
+
       return RedirectToAction("Index");
     }
 
 
-  public ActionResult Details(int id)
-{
-    Machine thisMachine = _db.Machines
-        .Include(machine => machine.JoinEntities)
-        .ThenInclude(join => join.Engineer) 
-        .FirstOrDefault(machine => machine.MachineId == id);
+    public ActionResult Details(int id)
+    {
+      Machine thisMachine = _db.Machines
+          .Include(machine => machine.JoinEntities)
+          .ThenInclude(join => join.Engineer)
+          .FirstOrDefault(machine => machine.MachineId == id);
 
-    return View(thisMachine);
-}
+      return View(thisMachine);
+    }
 
 
     public ActionResult Edit(int id)
@@ -61,20 +61,20 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult Edit (Machine machine)
+    public ActionResult Edit(Machine machine)
     {
       _db.Machines.Update(machine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
-     public ActionResult AddEngineer(int id)
+    public ActionResult AddEngineer(int id)
     {
       Machine thisMachine = _db.Machines.FirstOrDefault(machine => machine.MachineId == id);
       ViewBag.EngineerId = new SelectList(_db.Engineers, "EngineerId", "Name");
       return View(thisMachine);
     }
-    
+
     [HttpPost]
     public ActionResult AddEngineer(Machine machine, int EngineerId)
     {
@@ -85,7 +85,7 @@ namespace Factory.Controllers
       }
       return RedirectToAction("Index");
     }
-    
+
 
     public ActionResult Delete(int id)
     {
