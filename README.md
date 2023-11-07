@@ -15,14 +15,14 @@ A Factory Application created with ASP.NET Core MVC. This application allows for
 ## Setup/Installation Requirements
 - Note: An installation of the .NET SDK is required in order to run this application locally. [See Here](https://dotnet.microsoft.com/en-us/) for installation.
 1. Clone this repo.
-2. Open your shell (e.g., Terminal or GitBash) and navigate to this project's directory called "ryans_todo_from_section3/". 
+2. Open your shell (e.g., Terminal or GitBash) and navigate to this project's directory called "Factory.Solution/Factory". 
 3. Create a file named `appsettings.json`: `$ touch appsettings.json`
 4. Within `appsettings.json` add the following code, replacing the `uid` and `pwd` values with your own username and password for MySQL.
 
     ```json
     {
       "ConnectionStrings": {
-          "DefaultConnection": "Server=localhost;Port=3306;database=ryans_todo_from_section3;uid=[YOUR-USERNAME];pwd=[YOUR-MYSQL-PASSWORD];"
+          "DefaultConnection": "Server=localhost;Port=3306;database=Factory-database;uid=[YOUR-USERNAME];pwd=[YOUR-MYSQL-PASSWORD];"
       }
     }
     ```
