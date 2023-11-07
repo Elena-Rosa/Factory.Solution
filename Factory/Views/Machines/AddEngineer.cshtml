@@ -1,7 +1,7 @@
-@model Factory.Models.Engineer
+@model Factory.Models.Machine
 @using Factory.Models
 @{
-    ViewBag.Title = "AddEngineer";
+    <!-- ViewBag.Title = "AddEngineer"; -->
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h2 class="title">Add an Engineer</h2>
@@ -13,10 +13,10 @@
 
     @using (Html.BeginForm())
     {
-        @Html.HiddenFor(model => model.EngineerId)
+        @Html.HiddenFor(model => model.MachineId)
 
         @Html.Label("Select Engineer")
-        @Html.DropDownList("EngineerI", (SelectList)ViewBag.EngineerId, "Select an Engineer")
+        @Html.DropDownList("EngineerId", (SelectList)ViewBag.EngineerId, "Select an Engineer")
 
         <input type="submit" value="Save" class="button" />
     }

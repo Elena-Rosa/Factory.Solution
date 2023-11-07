@@ -8,6 +8,8 @@
 
 <h4>Edit this machine: @Html.DisplayFor(model => model.Name)</h4>
 
+@Html.ValidationMessageFor(model => model.Name)
+
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.MachineId)
@@ -16,7 +18,7 @@
   @Html.EditorFor(model => model.Name)
 
   @Html.LabelFor(model => model.MachineDescription)
-  @Html.DropDownList("EngineerId")
+  @Html.EditorFor(model => model.MachineDescription)
 
   <input type="submit" value="Save" />
 }

@@ -34,15 +34,17 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Create(Engineer engineer, int MachineId)
     {
-      _db.Engineers.Add(engineer);
-      _db.SaveChanges();
-      if (MachineId != 0)
+      if (!ModelState.IsValid)
       {
-        _db.EngineerMachines.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = engineer.EngineerId });
+        ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+        return View(engineer);
       }
+      _db.Engineers.Add(engineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+
 
     public ActionResult Details(int id)
     {
@@ -65,9 +67,17 @@ namespace Factory.Controllers
 
     public ActionResult Edit(Engineer engineer)
     {
-      _db.Entry(engineer).State = EntityState.Modified;
+      // _db.Entry(engineer).State = EntityState.Modified;
+      // _db.SaveChanges();
+      // return RedirectToAction("Details", new { id = engineer.EngineerId });
+
+      if (!ModelState.IsValid)
+      {
+        return View(engineer);
+      }
+      _db.Engineers.Update(engineer);
       _db.SaveChanges();
-      return RedirectToAction("Details", new { id = engineer.EngineerId });
+      return RedirectToAction("Index");
     }
 
     public ActionResult AddMachine(int id)
@@ -116,3 +126,4 @@ namespace Factory.Controllers
 
   }
 }
+
